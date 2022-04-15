@@ -27,14 +27,12 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 const Home = () => {
     const [startDate, setStartDate] = useState(null);
-    const [newvalue, setValue] = useState(null);
     const handleChangeRaw = (value) => {
         console.log(typeof value);
         if (typeof value == "string") {
             const replaceValue = value.replace(/ /g, "");
             // 0 Index is Years, 1 Index is Months, 2 Index is Days
             const splitData = replaceValue.split("/");
-            setValue(replaceValue);
             var theBigDay = new Date();
             if (splitData && splitData.length > 0 && splitData[0]) {
                 theBigDay.setYear(splitData[0]);
