@@ -26,7 +26,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 const Home = () => {
-    const [startDate, setStartDate] = useState(null);
+    const [startDate, setStartDate] = useState(new Date());
     const handleChangeRaw = (value) => {
         console.log(typeof value);
         if (typeof value == "string") {
@@ -51,14 +51,19 @@ const Home = () => {
         }
     };
     return (
-        <DatePicker
-            selected={startDate}
-            dateFormat="yyyy/MM/dd"
-            onChange={(date, event) => {
-                setStartDate(date);
-            }}
-            onChangeRaw={(event) => handleChangeRaw(event.target.value)}
-        />
+        <div>
+            <div id="focus"></div>
+            {String(startDate)}
+            <DatePicker
+                id="click"
+                selected={startDate}
+                dateFormat="yyyy/MM/dd"
+                onChange={(date, event) => {
+                    setStartDate(date);
+                }}
+                onChangeRaw={(event) => handleChangeRaw(event.target.value)}
+            />
+        </div>
     );
 };
 
